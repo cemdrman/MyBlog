@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const express = require("express");
 
-const app = express.express();
+const app = express();
 
 
 
