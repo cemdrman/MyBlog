@@ -1,23 +1,23 @@
 <%include ./partials/header%>
-    <!-- Page Header -->
-    <header class="masthead" style="background-image: url('images/splash.jpg')">
-        <div class="overlay"></div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-md-10 mx-auto">
-                    <div class="site-heading">
-                        <h2>Cem DIRMAN</h2>
-                        <span class="subheading">Nothing is impossible If you just work hard enough</span>
-                    </div>
+<!-- Page Header -->
+<header class="masthead" style="background-image: url('images/splash.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="site-heading">
+                    <h2>Cem DIRMAN</h2>
+                    <span class="subheading">Nothing is impossible If you just work hard enough</span>
                 </div>
             </div>
         </div>
-    </header>
+    </div>
+</header>
 
-    <!-- Main Content -->
-    <div class="container">
-          
-        <% postDataList.forEach( (post) => { %>
+<!-- Main Content -->
+<div class="container">
+
+    <% postDataList.forEach( (post) => { %>
         <div class="row">
             <div class="col-lg-3 mx-auto">
                 <img class="img-thumbnail" src=<%=post.postImage%> alt="">
@@ -26,10 +26,10 @@
                 <div class="post-preview">
                     <a href="post.html">
                         <h2 class="post-title">
-                                <%=post.postTitle%>
+                            <%=post.postTitle%>
                         </h2>
                         <h3 class="post-subtitle">
-                                <%=post.postSubtitle%>
+                            <%=post.postSubtitle%>
                         </h3>
                     </a>
                     <p class="post-meta">Posted by
@@ -40,7 +40,7 @@
         </div>
         <%});%>
 
-    </div>
+</div>
 
-    <hr>
-    <% include ./partials/footer%>
+<hr>
+<% include ./partials/footer%>
