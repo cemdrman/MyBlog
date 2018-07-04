@@ -1,16 +1,62 @@
 const express = require("express");
-
 const router = express.Router();
+const User = require('../models/User');
+const bodyParser = require('body-parser');
+const Blog = require('../models/Blog');
+
+router.use(bodyParser.urlencoded({ extended: true }));
 
 router.get("/admin/singin", (req, res) => {
     res.render('./admin/singin');
 });
 
-router.post("/admin_singin", (req, res) => {
-    res.render('./admin/admin_dashboard');
+router.post("/admin_singin", (req, res) => {    
    
     let email = req.body.email;
     let password = req.body.password;
+    const query = { "email":email, "password": password };
     console.log(email + " " + password);
+
+    User.findOne( query, (err,user)=> {
+        console.log('user:' + user);
+        if (err || !user){            
+            res.redirect('./admin/singin');
+        }
+        else {            
+            res.render('./admin/admin_dashboard');
+            console.log('başarılı giriş!');
+        } 
+    });
+    
 });
+
+router.post("/admin/addblog", (req, res) => {
+
+    let baslik = req.body.baslik;
+    let resimUrl = req.body.resimUrl;
+    let icerik = req.body.editor;
+    console.log('blog: ' + baslik + resimUrl + icerik);
+
+
+    var blog = {
+        blogTitle : baslik,
+        blogImage  : resimUrl,
+        blog : icerik
+    }
+
+    Blog.create({
+            blogTitle : baslik, 
+            blogImage : resimUrl, 
+            blog : icerik}, (err, Blog) =>{
+        if(err){
+            console.log("Blog kaydedilemedi!");
+            return res.status(500).send("There was a problem adding the information to the database.");
+        }else{
+            res.redirect('./admin/admin_dashboard');
+            console.log("Blog kaydedildi!");
+            alert('The blog saved successfully.');
+        }
+    });
+});
+
 module.exports = router;
