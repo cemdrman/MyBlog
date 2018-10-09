@@ -42,6 +42,5 @@ passport.deserializeUser(user.deserializeUser());
 
 //---Server
 
-const server = app.listen(process.env.PORT, () => {
-    console.log("App started on ");
+const server = app.listen(process.env.PORT, () => {    
 });
