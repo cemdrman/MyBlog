@@ -35,28 +35,22 @@ router.post("/admin/addblog", (req, res) => {
     let baslik = req.body.baslik;
     let resimUrl = req.body.resimUrl;
     let icerik = req.body.editor;
-    console.log('blog: ' + baslik + resimUrl + icerik);
-
-
-    var blog = {
-        blogTitle : baslik,
-        blogImage  : resimUrl,
-        blog : icerik
-    }
+    console.log('--------------------------------------');
+    console.log('blog: ' + baslik + ", " + resimUrl + ", " + icerik);
 
     Blog.create({
             blogTitle : baslik, 
             blogImage : resimUrl, 
-            blog : icerik}, (err, Blog) =>{
+            blog : icerik
+        }, (err, Blog) =>{
         if(err){
             console.log("Blog kaydedilemedi!");
+            console.log(err)
             return res.status(500).send("There was a problem adding the information to the database.");
         }else{
-            res.redirect('./admin/admin_dashboard');
+            res.render('./admin/admin_dashboard');
             console.log("Blog kaydedildi!");
-            alert('The blog saved successfully.');
         }
     });
 });
-
 module.exports = router;

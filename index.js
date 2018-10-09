@@ -3,7 +3,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const passport = require("passport");
 const localStrategy = require("passport-local");
-const user = require("./models/userModel");
+const user = require("./models/User");
 //const passportLocalMongoose = require("passport-local-mongoose");
 
 const app = express();
@@ -26,6 +26,7 @@ mongoose.connect("mongodb://localhost/MyBlogApp");
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended:true}));
+
 /*app.use(require('express-session')({
     secret :"secret-keyword",
     resave:false,
@@ -40,7 +41,7 @@ passport.deserializeUser(user.deserializeUser());
 */
 
 //---Server
-
-const server = app.listen(3000, () => {
-    console.log("App started");
+var port = process.env.PORT || 3000;
+const server = app.listen(port, () => {
+    console.log("App started on " + port);
 });
