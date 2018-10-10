@@ -1,10 +1,7 @@
 const mongoose = require("mongoose");
 const express = require("express");
 const bodyParser = require("body-parser");
-const passport = require("passport");
-const localStrategy = require("passport-local");
 const user = require("./models/User");
-//const passportLocalMongoose = require("passport-local-mongoose");
 
 const app = express();
 
@@ -12,36 +9,20 @@ const app = express();
 const indexRoutes = require("./routes/indexRoutes");
 const adminRoutes = require("./routes/adminRoutes");
 
-
 //Routes Using
 app.use(indexRoutes);
 app.use(adminRoutes);
 
-
-
 //---App Config
-mongoose.connect("mongodb://localhost/MyBlogApp");
+
+mongoose.connect("mongodb://cemdirman:15975300Cem@ds225703.mlab.com:25703/heroku_83mrzgsz");
 
 //view engine
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended:true}));
 
-/*app.use(require('express-session')({
-    secret :"secret-keyword",
-    resave:false,
-    saveUninitialized:false
-}));
-
-app.use(passport.initialize);
-app.use(passport.session());
-passport.use(new localStrategy(user.authenticate()));
-passport.serializeUser(user.serializeUser());
-passport.deserializeUser(user.deserializeUser());
-*/
-
 //---Server
-
 const server = app.listen(process.env.PORT || 5000, () => {  
     console.log('Our app is running on heroku');  
 });
