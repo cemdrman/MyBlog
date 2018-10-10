@@ -41,7 +41,7 @@ passport.deserializeUser(user.deserializeUser());
 */
 
 //---Server
-var port = process.env.PORT || 8080;
-const server = app.listen(port, () => {  
-    console.log('Our app is running on http://localhost:' + port);  
+
+const server = app.listen(process.env.PORT || 5000, () => {  
+    console.log('Our app is running on heroku');  
 });
