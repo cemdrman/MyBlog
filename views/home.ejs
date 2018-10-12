@@ -16,13 +16,13 @@
 <!-- Main Content -->
 <div class="container">
     <% postDataList.forEach( (post) => { %>
-        <div class="row">
+        <div class="row">            
             <div class="col-lg-3 mx-auto">
                 <img class="img-thumbnail" src="<%=post.blogImage%>">
-            </div>
+            </div>            
             <div class="col-lg-9 mx-auto">
                 <div class="post-preview">
-                    <a href="post.html">
+                    <a href="/post/<%=post._id%>">
                         <h2 class="post-title">
                             <%=post.blogTitle%>
                         </h2>

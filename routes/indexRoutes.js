@@ -21,10 +21,10 @@ router.get("/contact", (req, res) => {
     res.render('contact');
 });
 
-router.get("/post", (req, res) => {
+router.get("/blogs", (req, res) => {
     Blog.find({}, function(err, Blogs){        
         if (err) { console.log(err); return res.status(500).send("There was a problem finding the blogs."); }       
-        res.render('post', {postDataList: Blogs});
+        res.render('blog', {postDataList: Blogs});
     });    
 });
 module.exports = router;
