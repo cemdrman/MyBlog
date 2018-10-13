@@ -10,8 +10,7 @@ router.get("/admin/singin", (req, res) => {
     res.render('./admin/singin');
 });
 
-router.post("/admin_singin", (req, res) => {    
-   
+router.post("/admin_singin", (req, res) => {       
     let email = req.body.email;
     let password = req.body.password;
     const query = { "email":email, "password": password };
@@ -31,7 +30,6 @@ router.post("/admin_singin", (req, res) => {
 });
 
 router.post("/admin/addblog", (req, res) => {
-
     let baslik = req.body.baslik;
     let resimUrl = req.body.resimUrl;
     let icerik = req.body.editor;

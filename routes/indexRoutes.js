@@ -24,7 +24,16 @@ router.get("/contact", (req, res) => {
 router.get("/blogs", (req, res) => {
     Blog.find({}, function(err, Blogs){        
         if (err) { console.log(err); return res.status(500).send("There was a problem finding the blogs."); }       
-        res.render('blog', {postDataList: Blogs});
+        res.render('blogs', {postDataList: Blogs});
     });    
+});
+
+router.get("/blogs/:blogId", (req, res) => {   
+    Blog.findById(req.params.blogId)
+    .then((blog) => {  
+        res.render('blog/showBlog', {blog: blog});
+    }).catch((err) => {
+        if (err) { console.log(err); return res.status(500).send("There was a problem finding the blogs."); }    
+    });
 });
 module.exports = router;

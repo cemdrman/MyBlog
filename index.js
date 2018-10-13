@@ -2,7 +2,6 @@ const mongoose = require("mongoose");
 const express = require("express");
 const bodyParser = require("body-parser");
 const user = require("./models/User");
-
 const app = express();
 
 //---Routes---
@@ -14,7 +13,6 @@ app.use(indexRoutes);
 app.use(adminRoutes);
 
 //---App Config
-
 mongoose.connect("mongodb://cemdirman:15975300Cem@ds225703.mlab.com:25703/heroku_83mrzgsz");
 
 //view engine
