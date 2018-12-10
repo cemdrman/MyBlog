@@ -13,7 +13,7 @@ router.get("/about", (req, res) => {
     res.render('aboute');
 });
 
-router.get("/resume",(req,res)=>{
+router.get("/useful",(req,res)=>{
     res.render('resume');
 });
 

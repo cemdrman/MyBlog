@@ -14,24 +14,31 @@
     </div>
 </header>
 <!-- Main Content -->
-<div class="container">
-    <% postDataList.forEach( (post) => { %>
-        <div class="row">            
-            <div class="col-lg-3 mx-auto">
-                <img class="img-thumbnail" src="<%=post.blogImage%>">
-            </div>            
-            <div class="col-lg-9 mx-auto">
-                <div class="post-preview">
-                    <a href="/blogs/<%=post._id%>">
-                        <h2 class="post-title">
-                            <%=post.blogTitle%>
-                        </h2>
-                    </a>
-                    <p class="post-meta">Posted by Cem DIRMAN</p>
+<div class="row">
+    <div class="col-sm-8">
+        <div class="container">
+            <% postDataList.forEach( (post) => { %>
+            <div class="row">            
+                <div class="col-lg-3 mx-auto">
+                    <img class="img-thumbnail" src="<%=post.blogImage%>">
+                </div>            
+                <div class="col-lg-9 mx-auto">
+                    <div class="post-preview">
+                        <a href="/blogs/<%=post._id%>">
+                            <h2 class="post-title">
+                                <%=post.blogTitle%>
+                            </h2>
+                        </a>
+                        <p class="post-meta">Posted by Cem DIRMAN</p>
+                    </div>
                 </div>
             </div>
+            <%});%>
         </div>
-        <%});%>
+    </div>
+    <div class="col-sm-3">
+        <a class="twitter-timeline" data-width="500" data-height="500" href="https://twitter.com/CemDrman?ref_src=twsrc%5Etfw">Tweets by CemDrman</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    </div>
 </div>
 <hr>
 <% include ./partials/footer%>
