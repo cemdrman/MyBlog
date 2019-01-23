@@ -29,6 +29,15 @@ router.post("/admin_singin", (req, res) => {
     
 });
 
+router.get("/dashboard", (req,res) => {
+    Blog.findById(req.params.blogId)
+    .then((blog) => {  
+        res.render('admin/dashboard', {blog: blog});
+    }).catch((err) => {
+        if (err) { console.log(err); return res.status(500).send("There was a problem finding the blogs."); }    
+    });
+})
+
 router.post("/admin/addblog", (req, res) => {
     let baslik = req.body.baslik;
     let resimUrl = req.body.resimUrl;
