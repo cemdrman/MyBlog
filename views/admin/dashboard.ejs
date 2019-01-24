@@ -15,30 +15,28 @@
 </head>
 
 <body>
+    <div class="container">
+        <h1>Dashboard</h1>
+    </div>
+    <br>
 
   <!-- Main Content -->
-  <div class="container">
-    <a href="">Blok Ekle</a>
+    <div class="container">
+    <a href="/admin/newBlog">Blok Ekle</a>
     <a href="">Blok Sil</a>
 
     <% postDataList.forEach( (post) => { %>
-        <div class="row">            
-            <div class="col-lg-3 mx-auto">
-                <img class="img-thumbnail" src="<%=post.blogImage%>">
-            </div>            
+        <div class="row">           
             <div class="col-lg-9 mx-auto">
                 <div class="post-preview">
                     <a href="/blogs/<%=post._id%>">
-                        <h2 class="post-title">
-                            <%=post.blogTitle%>
-                        </h2>
+                        <h4 class="post-title"><%=post.blogTitle%></h4>
                     </a>
-                    <p class="post-meta">Posted by Cem DIRMAN</p>
                 </div>
             </div>
         </div>
-        <%});%>
-  </div>
+    <%});%>
+    </div>
   <hr>
 
   <!-- Footer -->
