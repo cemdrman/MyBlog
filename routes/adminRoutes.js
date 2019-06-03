@@ -20,23 +20,22 @@ router.post("/admin_singin", (req, res) => {
         console.log('user:' + user);
         if (err || !user){            
             res.redirect('./admin/singin');
+            console.log('başarısız giriş!');
         }
-        else {            
-            res.render('./admin/admin_dashboard');
-            console.log('başarılı giriş!');
+        else {   
+            console.log('başarılı giriş!');       
+            Blog.find({}, function(err, Blogs){        
+                if (err) { console.log(err); return res.status(500).send("There was a problem finding the blogs."); }       
+                res.render('./admin/dashboard', {postDataList: Blogs});
+            });  
         } 
     });
     
 });
 
-router.get("/dashboard", (req,res) => {
-    Blog.findById(req.params.blogId)
-    .then((blog) => {  
-        res.render('admin/dashboard', {blog: blog});
-    }).catch((err) => {
-        if (err) { console.log(err); return res.status(500).send("There was a problem finding the blogs."); }    
-    });
-})
+router.get("/admin/newBlog", (req,res) => {
+    res.render('./admin/newBlog');
+});
 
 router.post("/admin/addblog", (req, res) => {
     let baslik = req.body.baslik;
