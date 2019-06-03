@@ -16,28 +16,35 @@
 
 <body>
     <div class="container">
-        <h1>Dashboard</h1>
+        <br>
+        <br>
+        <h1>Admin Dashboard</h1>
     </div>
     <br>
 
   <!-- Main Content -->
     <div class="container">
-    <a href="/admin/newBlog">Blok Ekle</a>
-    <a href="">Blok Sil</a>
+    <a class="btn btn-primary" href="/admin/newBlog" role="button">Add New Blog</a><i class="glyphicon-plus"></i>
+    <br>
+    <br>
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Date</th>
+            <th>Operation</th>
+        </tr>
+        <% postDataList.forEach( (post) => { %>
+            <tr>
+              <td><%=post.blogTitle%></td>
+              <td><%=post.blogDate%></td>
+              <td><a href="/admin/deleteBlog/<%=post._id%>"></a><button class="btn" title="Delete Record"><i class="fa fa-trash"></i></button></td>
+            </tr>
+        <%});%>
+    </table>
 
-    <% postDataList.forEach( (post) => { %>
-        <div class="row">           
-            <div class="col-lg-9 mx-auto">
-                <div class="post-preview">
-                    <a href="/blogs/<%=post._id%>">
-                        <h4 class="post-title"><%=post.blogTitle%></h4>
-                    </a>
-                </div>
-            </div>
-        </div>
-    <%});%>
-    </div>
-  <hr>
+    <hr>
+    <br>
+    <br>
 
   <!-- Footer -->
   <footer>
